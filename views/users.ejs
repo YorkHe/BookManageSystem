@@ -1,0 +1,119 @@
+<% include component/header.ejs %>
+</head>
+
+
+<body class="nav-md">
+<div class="container body">
+    <div class="main_container">
+        <% include component/sidebar.ejs %>
+        <% include component/top_nav.ejs %>
+
+        <div class="right_col" role="main">
+            <% include component/top_tiles.ejs %>
+            <div class="row">
+                <div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3 col-sm-offset-3">
+                    <div class="x_panel tile">
+                        <div class="x_title">
+                            <h2>用户管理</h2>
+                            <div class="clearfix"></div>
+                        </div>
+                        <div class="x_content">
+                            <div class="dashboard-widget-content">
+                                <button id="add_new">添加新用户</button>
+                                <button id="delete_old">删除旧用户</button>
+
+                                <table class="table table-striped" id="user_table">
+                                    <tr>
+                                        <th>序号</th>
+                                        <th>借书证号</th>
+                                        <th>姓名</th>
+                                        <th>单位</th>
+                                        <th>类型</th>
+                                    </tr>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+                <div class="modal fade" id="add_new_modal" tabindex="-1" role="dialog" aria-labelledby="add_new_modal" style="display: none">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                                <h4 class="modal-title" id="book_query_result_label">添加新读者</h4>
+                            </div>
+                            <div class="modal-body">
+                                <form class="form-horizontal">
+                                    <div class="form-group">
+                                        <label for="r_id" class="col-sm-2 control-label">借书证号</label>
+                                        <div class="col-sm-10">
+                                            <input type="text" id="r_id" class="form-control">
+                                        </div>
+                                    </div>
+                                     <div class="form-group">
+                                        <label for="r_name" class="col-sm-2 control-label">姓名</label>
+                                        <div class="col-sm-10">
+                                            <input type="text" id="r_name" class="form-control">
+                                        </div>
+                                    </div>
+                                     <div class="form-group">
+                                        <label for="r_organization" class="col-sm-2 control-label">单位</label>
+                                        <div class="col-sm-10">
+                                            <input type="text" id="r_organization" class="form-control">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="r_type" class="col-sm-2 control-label">类型</label>
+                                        <div class="col-sm-10">
+                                            <input type="text" id="r_type" class="form-control">
+                                        </div>
+                                    </div>
+
+                                </form>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-default" id="add_new_btn">添加</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="modal fade" id="delete_old_modal" tabindex="-1" role="dialog" aria-labelledby="delete_old_modal" style="display: none">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                                <h4 class="modal-title" id="book_query_result_label">删除读者</h4>
+                            </div>
+                            <div class="modal-body">
+                                <div class="form-group">
+                                    <label for="delete_rid" class="col-sm-2 control-label">借书证号</label>
+                                    <div class="col-sm-10">
+                                        <input type="text" id="delete_rid" class="form-control">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-default" id="delete_old_btn">删除</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+        </div>
+    </div>
+</div>
+
+<script src="js/bootstrap.min.js"></script>
+<script src="js/pace/pace.min.js"></script>
+<script src="js/custom.js"></script>
+<script src="js/users.js"></script>
+</body>

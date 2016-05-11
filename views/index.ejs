@@ -1,0 +1,230 @@
+<% include component/header.ejs %>
+</head>
+
+
+<body class="nav-md">
+
+<div class="container body">
+
+    <div class="main_container">
+
+        <% include component/sidebar.ejs %>
+
+        <% include component/top_nav.ejs %>
+
+        <div class="right_col" role="main">
+
+            <% include component/top_tiles.ejs %>
+
+            <div class="row">
+                <div class="col-md-4 col-sm-4 col-xs-12">
+                    <div class="x_panel tile fixed_height_320">
+                        <div class="x_title">
+                            <h2>图书查询</h2>
+                            <ul class="nav navbar-right panel_toolbox">
+                            </ul>
+                            <div class="clearfix"></div>
+                        </div>
+                        <div class="x_content">
+                            <div class="dashboard-widget-content">
+                                <form class="form-horizontal">
+                                    <div class="form-group">
+                                        <label for="book_id" class="col-sm-2 control-label">书号: </label>
+                                        <div class="col-sm-10">
+                                            <input type="text" id="book_id" class="form-control">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="book_name" class="col-sm-2 control-label">书名: </label>
+                                        <div class="col-sm-10">
+                                            <input type="text" id="book_name" class="form-control">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="book_author" class="col-sm-2 control-label">作者: </label>
+                                        <div class="col-sm-10">
+                                            <input type="text" id="book_author" class="form-control">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="book_publisher" class="col-sm-2 control-label">出版社: </label>
+                                        <div class="col-sm-10">
+                                            <input type="text" id="book_publisher" class="form-control">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="book_type" class="col-sm-2 control-label">类别: </label>
+                                        <div class="col-sm-10">
+                                            <input type="text" id="book_type" class="form-control">
+                                        </div>
+                                    </div>
+                                </form>
+                                <button class="btn-primary" id="book_query">查询</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="modal fade" id="book_query_result" tabindex="-1" role="dialog" aria-labelledby="book_query_result" style="display: none">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                                <h4 class="modal-title" id="book_query_result_label">查询结果</h4>
+                            </div>
+                            <div class="modal-body">
+                                <table class="table table-striped" id="book_res">
+                                    <tr>
+                                        <th>序号</th>
+                                        <th>书号</th>
+                                        <th>书名</th>
+                                        <th>类别</th>
+                                        <th>作者</th>
+                                        <th>出版社</th>
+                                        <th>年份</th>
+                                        <th>价格</th>
+                                        <th>总量</th>
+                                        <th>在库数量</th>
+                                    </tr>
+                                </table>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-4 col-sm-4 col-xs-12">
+                    <div class="x_panel tile fixed_height_320 overflow_hidden">
+                        <div class="x_title">
+                            <h2>用户查询</h2>
+                            <ul class="nav navbar-right panel_toolbox">
+                            </ul>
+                            <div class="clearfix"></div>
+                        </div>
+                        <div class="x_content">
+                            <div class="dashboard-widget-content">
+                                <form action="" class="form-horizontal">
+
+                                    <div class="form-group">
+                                        <label for="user_id" class="col-sm-2 control-label">借书证号: </label>
+                                        <div class="col-sm-10">
+                                            <input type="text" id="user_id" class="form-control">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="user_name" class="col-sm-2 control-label">姓名: </label>
+                                        <div class="col-sm-10">
+                                            <input type="text" id="user_name" class="form-control">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="user_from" class="col-sm-2 control-label">单位: </label>
+                                        <div class="col-sm-10">
+                                            <input type="text" id="user_from" class="form-control">
+                                        </div>
+                                    </div>
+                                </form>
+                                <button class="btn-primary" id="user_query">查询</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+         <div class="modal fade" id="user_query_result" tabindex="-1" role="dialog" aria-labelledby="user_query_result" style="display: none">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                                <h4 class="modal-title" id="user_query_result_label">查询结果</h4>
+                            </div>
+                            <div class="modal-body">
+                                <table class="table table-striped">
+                                    <tr>
+                                        <th>属性名</th>
+                                        <th>值</th>
+                                    </tr>
+                                    <tr>
+                                        <td>借书证号</td>
+                                        <td id="userres_r_id"></td>
+                                    </tr>
+                                    <tr>
+                                        <td>姓名</td>
+                                        <td id="userres_name"></td>
+                                    </tr>
+                                     <tr>
+                                        <td>单位</td>
+                                        <td id="userres_org"></td>
+                                    </tr>
+                                     <tr>
+                                        <td>类型</td>
+                                        <td id="userres_type"></td>
+                                    </tr>
+                                </table>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-4 col-sm-4 col-xs-12">
+                    <div class="x_panel tile fixed_height_320">
+                        <div class="x_title">
+                            <h2>
+                                快速归还
+                            </h2>
+                            <ul class="nav navbar-right panel_toolbox">
+                            </ul>
+                            <div class="clearfix"></div>
+                        </div>
+                        <div class="x_content">
+                            <div class="dashboard-widget-content">
+                                <form action="" class="form-horizontal">
+                                    <div class="form-group">
+                                        <label for="return_bid" class="col-sm-2 control-label">书号: </label>
+                                        <div class="col-sm-10">
+                                            <input type="text" id="return_bid" class="form-control">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="return_rid" class="col-sm-2 control-label">借书证号: </label>
+                                        <div class="col-sm-10">
+                                            <input type="text" id="return_rid" class="form-control">
+                                        </div>
+                                    </div>
+                                </form>
+                                <button class="btn-primary" id="borrow_return">确认</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+    <!-- /page content -->
+
+    <!-- footer content -->
+    <footer>
+        <div class="clearfix"></div>
+    </footer>
+    <!-- /footer content -->
+</div>
+</div>
+
+<script src="js/bootstrap.min.js"></script>
+<script src="js/pace/pace.min.js"></script>
+<script src="js/custom.js"></script>
+<script src="js/index.js"></script>
+
+</body>
+
+</html>
