@@ -4,6 +4,9 @@
  */
 
 $(function () {
+    if(document.cookie.search("user") == -1){
+        window.location = "/login";
+    }
     $("#book_query").click(function () {
 
         var data = {};

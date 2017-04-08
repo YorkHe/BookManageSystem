@@ -9,42 +9,58 @@ var admin_model = require('../model/admin');
 
 module.exports = admin_route;
 
-admin_route.post("/add", (req, res)=>{
+admin_route.post("/add", (req, res) => {
     var data = req.body;
 
-    admin_model.add_admin(data, (err, ret)=>{
-        if (err)
-        {
+    admin_model.add_admin(data, (err, ret) => {
+        if (err) {
             res.json({
-                "code" : 1,
-                "error" : err
+                "code": 1,
+                "error": err
             });
 
             return;
         }
 
         res.json({
-            "code" : 0
+            "code": 0
         });
     })
 });
 
-admin_route.post("/modify", (req, res)=>{
+admin_route.post("/modify", (req, res) => {
     var data = req.body;
 
-    admin_model.modify_admin(data, (err, ret)=>{
-        if (err)
-        {
+    admin_model.modify_admin(data, (err, ret) => {
+        if (err) {
             res.json({
-                "code" : 1,
-                "error" : err
+                "code": 1,
+                "error": err
             });
 
             return;
         }
 
         res.json({
-            "code" : 0
+            "code": 0
         });
+    });
+});
+
+admin_route.post('/login', (req, res) => {
+    var data = req.body;
+    admin_model.login(data, (err, ret) => {
+        if (err) {
+            res.json({
+                "code": 1,
+                "error": err
+            });
+        }
+        if (ret.code == 0) {
+            res.cookie("user", ret.name, {});
+            res.redirect("/");
+        } else {
+            res.render("login", {error: "用户名或密码错误"})
+        }
     });
 });
