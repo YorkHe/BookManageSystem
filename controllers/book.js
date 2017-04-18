@@ -1,6 +1,6 @@
 /**
  *
- * Created by 宇 on 2016/4/27.
+ * Created by 宇 on 2017/4/7.
  */
 
 var express = require("express");
@@ -50,6 +50,7 @@ book_route.post('/borrow', function (req, res) {
 
 book_route.post('/return', function (req, res) {
     var data = req.body;
+    console.log(data);
     book_model.return_book(data, (err, ret)=>{
         if(err)
         {

@@ -1,5 +1,5 @@
 /**
- * Created by 宇 on 2016/4/27.
+ * Created by 宇 on 2017/4/7.
  */
 
 var express = require('express');
@@ -47,6 +47,7 @@ function login(data, cb) {
         console.log(data);
         connection.query(`SELECT * from admin where name = \'${data.email}\' and pwd = \'${data.password}\'`,
             (err, rows) => {
+                connection.release();
                 if (err) {
                     cb(err, {
                         code: 1,

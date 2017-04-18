@@ -1,5 +1,5 @@
 /**
- * Created by 宇 on 2016/4/27.
+ * Created by 宇 on 2017/4/7.
  */
 
 var express = require('express');
@@ -122,7 +122,7 @@ function query_all_reader(cb)
 function query_all_history(data, cb)
 {
     pool.getConnection((err, connection)=>{
-        connection.query(`SELECT c_id, name, borrow_date, return_date, a_id FROM book, borrow WHERE book.b_id = borrow.b_id and borrow.r_id = ${data}`, (err, rows)=>{
+        connection.query(`SELECT r_id, name, borrow_date, return_date, a_id FROM book, borrow WHERE book.b_id = borrow.b_id and borrow.r_id = ${data}`, (err, rows)=>{
             if (err)
             {
                 console.error(err);

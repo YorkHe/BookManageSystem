@@ -1,6 +1,6 @@
 /**
  *
- * Created by 宇 on 2016/4/27.
+ * Created by 宇 on 2017/4/7.
  */
 
 var express = require("express");
@@ -20,6 +20,7 @@ module.exports = {
 function get_total(cb) {
     pool.getConnection(function (err, connection) {
         connection.query(`SELECT COUNT(*) AS num FROM book`, (err, rows)=> {
+            connection.release();
             if (err) {
                 console.error(err);
                 cb(new Error(err), null);
@@ -94,6 +95,7 @@ function borrow_book(data, cb) {
 
 function return_book(data, cb) {
     pool.getConnection(function (err, connection) {
+        console.log(data);
         connection.query(`DELETE from borrow
                         where r_id = ${data.r_id} and b_id = ${data.b_id}`, (err, rows)=> {
             if (err) {

@@ -1,6 +1,6 @@
 /**
  *
- * Created by 宇 on 2016/4/28.
+ * Created by 宇 on 2017/4/8.
  */
 
 $(function () {
@@ -8,6 +8,7 @@ $(function () {
         var data = {};
         data['b_id'] = $("#book_id").val();
         data['r_id'] = $("#r_id").val();
+        console.log(data);
         $.post("/book/return", data, function (data, status) {
             if (data.code == 0)
             {
